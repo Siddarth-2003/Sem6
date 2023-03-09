@@ -1,0 +1,30 @@
+import torch
+import torch.nn as nn
+
+class Perceptron(nn.Module):
+    def __init__(self, input_size, output_size):
+        super(Perceptron, self).__init__()
+        self.fc = nn.Linear(input_size, output_size)
+    
+    def forward(self, x):
+        x = self.fc(x)
+        return x
+
+inputs = torch.tensor([[-1, -1], [-1, 1], [1, -1], [1, 1]], dtype=torch.float32)
+targets = torch.tensor([[-1], [-1], [-1], [1]], dtype=torch.float32)
+
+model = Perceptron(2, 1)
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+
+for epoch in range(100):
+    outputs = model(inputs)
+    loss = criterion(outputs, targets)
+    
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+inputs = torch.tensor([[-1, -1], [-1, 1], [1, -1], [1, 1]], dtype=torch.float32)
+outputs = model(inputs)
+print(outputs)

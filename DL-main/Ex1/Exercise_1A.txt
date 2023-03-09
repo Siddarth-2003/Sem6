@@ -1,0 +1,60 @@
+import torch
+gpu = torch.cuda.is_available()
+print(gpu)
+
+#Creating_Tensor
+a = torch.tensor([1,2,3], dtype = torch.float64)
+print(a)
+b = torch.tensor([4,5,6], dtype = torch.float64)
+print(b)
+
+#Addition
+print(a+b)
+print(torch.add(a,b))
+print(a.add(b))
+
+#Inplace_Addition
+a.add_(7)
+
+#Multiplication
+print(a*b)
+print(a.mul(b))
+
+#MatrixMultiplication
+print(a.matmul(b))
+
+torch.add(a,b).sum()
+
+#DotMultiplication
+a.dot(b)
+
+z = torch.zeros(2,3,dtype=int)
+print(f)
+o = torch.ones(2,3,dtype=int)
+print(o)
+
+k = torch.tensor([1,2,3,4,5,6])
+print("Tensor: ",k)
+print("DataType: ",k.dtype)
+print("Size: ",k.size())
+print("Dimension: ",k.dim())
+
+print(k[0])
+print(k[4])
+print(k[0:3])
+
+#Sort
+arr = torch.tensor([10,4,3,6,2,1,7,9])
+print("Ascending: ",torch.sort(arr))
+print("Descending: ",torch.sort(arr, descending=True))
+
+#Changing_View_of_Tensor
+m = torch.arange(0,9)
+n = x.view(3,3)
+print(m)
+print(n)
+o = torch.arange(8)
+p = m.view(2,2,2)
+print(o)
+print(p)
+----------------------------------------------
